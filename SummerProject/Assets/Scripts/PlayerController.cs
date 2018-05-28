@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+[RequireComponent(typeof(PlayerBullet))]
+public class PlayerController : MonoBehaviour {
+
+    private PlayerBullet bulletScript;
 
     /*   Vector3 forwardForce = new Vector3(0, 0, 1);
 
@@ -29,6 +32,10 @@ public class PlayerMovement : MonoBehaviour {
            }
        }
     */
+    void Start()
+    {
+        bulletScript = GetComponent<PlayerBullet>();  
+    }
 
     void Update()
     {
@@ -37,6 +44,11 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.Rotate(0, x, 0);
         transform.Translate(0, 0, z);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            bulletScript.Shoot();
+        }
     }
 
 }

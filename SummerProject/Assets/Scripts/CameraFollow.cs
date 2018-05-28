@@ -10,12 +10,11 @@ public class CameraFollow : MonoBehaviour
     public float height = 1.0f;
     public float heightDamping = 2.0f;
     public float positionDamping = 2.0f;
-    public float rotationDamping = 2.0f;
     public float SmoothTime = 1.0f;
     public float maxSpeed = 5.0f;
-    private Vector3 Velocity = Vector3.zero;
+    private Vector3 velocity = Vector3.one;
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         //Velocity = Time.deltaTime * rotationDamping);
 
@@ -27,13 +26,13 @@ public class CameraFollow : MonoBehaviour
         heightDamping * Time.deltaTime);
         // Set the position of the camera
         Vector3 wantedPosition = target.position - target.forward * distance;
-        transform.position = Vector3.Lerp(transform.position, wantedPosition,
-        Time.deltaTime * positionDamping);
+        transform.position = Vector3.SmoothDamp(transform.position, wantedPosition, ref velocity, positionDamping, maxSpeed);
+
         // Adjust the height of the camera
         transform.position = new Vector3(transform.position.x, currentHeight,
         transform.position.z);
 
-        // Set the forward to rotate with time
-        transform.forward = Vector3.SmoothDamp(transform.forward, target.forward, ref Velocity, SmoothTime, maxSpeed);
+        //set where the camera is looking at 
+        transform.LookAt(target, target.up);
     }
 }
