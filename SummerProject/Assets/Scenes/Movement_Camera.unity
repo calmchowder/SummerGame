@@ -264,6 +264,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54670008320310268, guid: 60beedaabe97e7946bde6eba4729c3cd,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54670008320310268, guid: 60beedaabe97e7946bde6eba4729c3cd,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54670008320310268, guid: 60beedaabe97e7946bde6eba4729c3cd,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54670008320310268, guid: 60beedaabe97e7946bde6eba4729c3cd,
+        type: 2}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60beedaabe97e7946bde6eba4729c3cd, type: 2}
   m_IsPrefabParent: 0
@@ -412,13 +432,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2090558921}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.24394509, y: -0, z: -0, w: 0.9697891}
+  m_LocalPosition: {x: 0, y: 7.3, z: -6.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 28.239002, y: 0, z: 0}
 --- !u!114 &2090558926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,9 +451,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 785874282}
-  distance: 10
-  height: 3
-  heightDamping: 2
-  positionDamping: 1
-  SmoothTime: 1
-  maxSpeed: 5
+  distance: 15
+  minDistance: 1
+  maxDistance: 15
+  offset: {x: 0, y: 5, z: -5}
+  smoothSpeed: 1
+  scrollSensitivity: 10
+  velocity: {x: 0.0000007103413, y: 0.012238339, z: -0.012236094}

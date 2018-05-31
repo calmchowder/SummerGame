@@ -6,33 +6,29 @@ public class CameraFollow : MonoBehaviour
 {
 
     public Transform target;
-    public float distance = 3.0f;
-    public float height = 1.0f;
-    public float heightDamping = 2.0f;
-    public float positionDamping = 2.0f;
-    public float SmoothTime = 1.0f;
-    public float maxSpeed = 5.0f;
-    private Vector3 velocity = Vector3.one;
+    public float distance = 5.0f;
+    public float minDistance = 1f;
+    public float maxDistance = 7f;
+    public Vector3 offset;
+    public float smoothSpeed = 5.0f;
+    public float scrollSensitivity = 1f;
+    public Vector3 velocity = Vector3.zero;
 
     private void LateUpdate()
     {
-        //Velocity = Time.deltaTime * rotationDamping);
+        if (!target)
+        {
+            Debug.Log("No target set for camera");
+            return;
+        }
+        float num = Input.GetAxis("Mouse ScrollWheel");
+        distance -= num * scrollSensitivity;
+        distance = Mathf.Clamp(distance, minDistance, maxDistance);
 
-        if (!target) return;
-        float wantedHeight = target.position.y + height;
-        float currentHeight = transform.position.y;
-        // Damp the height
-        currentHeight = Mathf.Lerp(currentHeight, wantedHeight,
-        heightDamping * Time.deltaTime);
-        // Set the position of the camera
-        Vector3 wantedPosition = target.position - target.forward * distance;
-        transform.position = Vector3.SmoothDamp(transform.position, wantedPosition, ref velocity, positionDamping, maxSpeed);
+        Vector3 pos = target.position + offset;
+        pos -= transform.forward * distance;
 
-        // Adjust the height of the camera
-        transform.position = new Vector3(transform.position.x, currentHeight,
-        transform.position.z);
+        transform.position = Vector3.SmoothDamp(transform.position, pos, ref velocity, smoothSpeed);
 
-        //set where the camera is looking at 
-        transform.LookAt(target, target.up);
     }
 }
