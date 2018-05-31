@@ -5,8 +5,6 @@ using UnityEngine;
 abstract public class Bullet : MonoBehaviour {
 
     [SerializeField]
-    private uint bulletsFired = 0;
-    [SerializeField]
     public Transform bulletSpawn;
     public float damage = 1.0f;
     public float speed = 1.0f;

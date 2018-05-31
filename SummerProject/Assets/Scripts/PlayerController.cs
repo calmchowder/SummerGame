@@ -6,15 +6,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float movementSpeed = 3.0f;
-    public float dashSpeed = 20.0f;
     private PlayerBullet bulletScript;
     private Plane plane;
     private Ray ray;
     private Rigidbody rb;
+    private Dash dash;
 
 
     void Start()
     {
+        dash = GetComponent<Dash>();
         bulletScript = GetComponent<PlayerBullet>();
         rb = GetComponent<Rigidbody>();
         plane = new Plane(Vector3.up, Vector3.zero);
@@ -49,8 +50,7 @@ public class PlayerController : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            rb.velocity = transform.forward * dashSpeed;
+            dash.StartAbility();
         }
     }
-
 }

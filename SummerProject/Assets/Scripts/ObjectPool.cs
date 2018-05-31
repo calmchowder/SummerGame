@@ -6,7 +6,7 @@ public class ObjectPool : MonoBehaviour {
 
     public static ObjectPool current;
     public GameObject pooledObject;
-    public int pooledAmount = 20;
+    public int pooledAmount = 10;
     public bool willGrow = true;
 
     List<GameObject> pooledObjects;
