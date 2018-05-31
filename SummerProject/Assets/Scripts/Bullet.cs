@@ -15,7 +15,6 @@ abstract public class Bullet : MonoBehaviour {
         GameObject obj = ObjectPool.current.GetPooledObject();
         if (obj == null) return;
         obj.transform.position = bulletSpawn.position;
-        Debug.DrawLine(transform.position, bulletSpawn.position, Color.black);
         obj.transform.rotation = bulletSpawn.rotation;
         Rigidbody bulletRB = obj.GetComponent<Rigidbody>();
         bulletRB.velocity = bulletSpawn.forward * speed;

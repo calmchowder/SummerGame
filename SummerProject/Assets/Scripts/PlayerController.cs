@@ -52,5 +52,6 @@ public class PlayerController : MonoBehaviour {
         {
             dash.StartAbility();
         }
+        if(dash.abilityOn) dash.UpdateMovement();
     }
 }
