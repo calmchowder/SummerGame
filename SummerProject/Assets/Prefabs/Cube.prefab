@@ -41,12 +41,13 @@ GameObject:
   - component: {fileID: 23162330369528484}
   - component: {fileID: 136738288347875282}
   - component: {fileID: 54670008320310268}
+  - component: {fileID: 114441019034540586}
   - component: {fileID: 114639955393666424}
   - component: {fileID: 114178077033772032}
   - component: {fileID: 114179719274931476}
   m_Layer: 9
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,12 +216,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1edc174a9a4eff14fab21654eeebdc12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityOn: 1
   collisonLayerMask:
     serializedVersion: 2
     m_Bits: 0
   dashDistance: 5
   dashDuration: 0.05
-  abilityOn: 1
+  collisionRayFeetOffSetY: 0.1
+--- !u!114 &114441019034540586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518166667801114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712c1f183212dfd4283c6d8493c8612b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  energy: 100
 --- !u!114 &114639955393666424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -244,5 +259,5 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.6483619
   m_Height: 1.6241813
-  m_Direction: 1
+  m_Direction: 0
   m_Center: {x: 0, y: 0, z: -0.029790878}
