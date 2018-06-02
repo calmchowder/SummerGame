@@ -26,12 +26,8 @@ public class RangedEnemy : MonoBehaviour, IEnemy {
 		
 	}
 
-<<<<<<< HEAD:SummerProject/Assets/Scripts/RangedEnemy.cs
-    new void Move () {
-=======
 	public void Move () 
     {
->>>>>>> 2bf5fb8d30b9108e8c11e439f7ee317887a39708:SummerProject/Assets/Scripts/Enemy/RangedEnemy.cs
         ThisAgent.SetDestination(target.position);
 	}
 

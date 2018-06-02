@@ -1565,12 +1565,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 860077165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 504091cd53957ad468dc062ed8295e92, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e4d73526fd14d241abdbd16193a49b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2075286370}
   health: 0
-  bulletList: []
   rb: {fileID: 0}
 --- !u!65 &860077167
 BoxCollider:
