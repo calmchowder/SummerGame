@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class RangedEnemy : Enemy {
+public class RangedEnemy : MonoBehaviour, IEnemy {
 
     [SerializeField]
+    public Transform target;
+    protected NavMeshAgent ThisAgent = null;
     private float firingCD = 1.0f;
+
+    public float health;
+    public List<Bullet> bulletList;
+    public Rigidbody rb;
+    //public Collider3D collider;
 
     void Start()
     {
@@ -14,11 +21,17 @@ public class RangedEnemy : Enemy {
         ThisAgent = GetComponent<NavMeshAgent>();
     }
 
-	new void Attack () {
+	public void Attack () 
+    {
 		
 	}
 
+<<<<<<< HEAD:SummerProject/Assets/Scripts/RangedEnemy.cs
     new void Move () {
+=======
+	public void Move () 
+    {
+>>>>>>> 2bf5fb8d30b9108e8c11e439f7ee317887a39708:SummerProject/Assets/Scripts/Enemy/RangedEnemy.cs
         ThisAgent.SetDestination(target.position);
 	}
 
