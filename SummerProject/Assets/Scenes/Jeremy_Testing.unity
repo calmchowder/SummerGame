@@ -1568,7 +1568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504091cd53957ad468dc062ed8295e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 950506196}
+  target: {fileID: 860077170}
   health: 0
   bulletList: []
   rb: {fileID: 0}
@@ -1866,11 +1866,6 @@ Prefab:
     - {fileID: 114905860026840580, guid: 689cb192cf6fbff4199f0ff42e0c15ce, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 689cb192cf6fbff4199f0ff42e0c15ce, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &950506196 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4638646213130622, guid: 689cb192cf6fbff4199f0ff42e0c15ce,
-    type: 2}
-  m_PrefabInternal: {fileID: 950506195}
 --- !u!1 &1087041060
 GameObject:
   m_ObjectHideFlags: 0
