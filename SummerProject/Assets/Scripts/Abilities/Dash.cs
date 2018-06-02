@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash : MonoBehaviour {
+public class Dash : MovementAbility 
+{
 
     [SerializeField]
     private LayerMask collisonLayerMask;
     public float dashDistance = 5.0f;
     public float dashDuration = .2f;
-    public bool abilityOn;
     [Tooltip("The y offset from the charcthers feet from which we want to send a ray to check if the charcther would go through geometry")]
     [SerializeField]
     private float collisionRayFeetOffSetY = .1f;
-    [SerializeField]
-    private float collisionOffsetDistance = .1f;
-
     private float startTimeAbility = float.MinValue;
     private Vector3 positionAtStartAbility;
     private Vector3 targetPosition;
@@ -26,16 +23,16 @@ public class Dash : MonoBehaviour {
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
-    public void StartAbility()
+    public override void StartAbility()
     {
         abilityOn = true;
         Vector3 dashVector = transform.forward * dashDistance;
-        Vector3 rayOrigin = collisionRayFeetOffSetY * Vector3.up;
         Ray dashRay = new Ray(transform.position, transform.forward);
         RaycastHit rayHit;
+        //Check for dash collision 
         if(Physics.Raycast(dashRay, out rayHit, dashDistance, collisonLayerMask.value))
         {
-            //targetPosition = rayHit.point + rayHit.normal * (capsuleCollider.radius + collisionRayFeetOffSetY) - collisionOffsetDistance * Vector3.up;
+            //Stop dash from tunneling into objects 
             float distanceOffSet = capsuleCollider.radius;
             targetPosition = rayHit.point - Vector3.up * collisionRayFeetOffSetY - transform.forward * capsuleCollider.radius;
             while(rayHit.collider.Raycast(dashRay, out rayHit, rayHit.distance - distanceOffSet))
@@ -53,20 +50,21 @@ public class Dash : MonoBehaviour {
         positionAtStartAbility = transform.position;
     }
 
-    public void UpdateMovement()
+    public override void UpdateMovement()
     {
+        //linearly interpolated movement for dash 
         float timeSinceAbility = Time.time - startTimeAbility;
         Vector3 dashVector = targetPosition - positionAtStartAbility;
         Vector3 interpolatedPos = positionAtStartAbility + (timeSinceAbility / dashDuration) * dashVector;
         transform.position = interpolatedPos;
-
+        //stops interpolating when dash finishes 
         if(timeSinceAbility > dashDuration)
         {
             StopAbility();
         }
     }
 
-    public void StopAbility()
+    public override void StopAbility()
     {
         abilityOn = false;
     }
