@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour, IEnemy {
-
+    
     [SerializeField]
     public Transform target;
     protected NavMeshAgent ThisAgent = null;
@@ -25,12 +25,16 @@ public class RangedEnemy : MonoBehaviour, IEnemy {
     {
 		
 	}
-	
 
 	public void Move () 
     {
         ThisAgent.SetDestination(target.position);
 	}
+
+    public void Death() 
+    {
+
+    }
 
     bool InRange()
     {
