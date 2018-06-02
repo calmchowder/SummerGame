@@ -17,9 +17,8 @@ public class RangedEnemy : Enemy {
 	new void Attack () {
 		
 	}
-	
 
-	new void Move () {
+    new void Move () {
         ThisAgent.SetDestination(target.position);
 	}
 

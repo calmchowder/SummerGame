@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 [RequireComponent(typeof(PlayerBullet))]
 public class PlayerController : MonoBehaviour {
 
     public float movementSpeed = 3.0f;
     private PlayerBullet bulletScript;
+    private Player player;
     private Plane plane;
     private Ray ray;
-    private Rigidbody rb;
     private Dash dash;
 
 
     void Start()
     {
         dash = GetComponent<Dash>();
+        player = GetComponent<Player>();
         bulletScript = GetComponent<PlayerBullet>();
-        rb = GetComponent<Rigidbody>();
         plane = new Plane(Vector3.up, Vector3.zero);
     }
 
@@ -44,11 +45,11 @@ public class PlayerController : MonoBehaviour {
 
 
         //Player actions 
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetMouseButtonDown(0) && bulletScript.CanStartAbility()) 
         {
             bulletScript.Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dash.CanStartAbility())
         {
             dash.StartAbility();
         }

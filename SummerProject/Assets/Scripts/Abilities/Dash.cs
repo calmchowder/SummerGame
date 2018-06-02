@@ -5,13 +5,17 @@ using UnityEngine;
 public class Dash : MovementAbility 
 {
 
-    [SerializeField]
-    private LayerMask collisonLayerMask;
     public float dashDistance = 5.0f;
     public float dashDuration = .2f;
+
+    [SerializeField]
+    private LayerMask collisonLayerMask;
     [Tooltip("The y offset from the charcthers feet from which we want to send a ray to check if the charcther would go through geometry")]
     [SerializeField]
     private float collisionRayFeetOffSetY = .1f;
+    [SerializeField]
+    private float coolDownDuration = .5f;
+
     private float startTimeAbility = float.MinValue;
     private Vector3 positionAtStartAbility;
     private Vector3 targetPosition;
@@ -67,5 +71,10 @@ public class Dash : MovementAbility
     public override void StopAbility()
     {
         abilityOn = false;
+    }
+
+    public override bool CanStartAbility()
+    {
+        return Time.time - startTimeAbility > dashDuration + coolDownDuration;
     }
 }
